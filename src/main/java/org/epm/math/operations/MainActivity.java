@@ -1,5 +1,6 @@
 package org.epm.math.operations;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -33,7 +34,7 @@ import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
 import androidx.preference.PreferenceManager;
 
-import org.epm.math.base.Math;
+import org.epm.math.base.Math_;
 import org.epm.math.settings.SettingsActivity;
 
 import java.util.Locale;
@@ -124,7 +125,7 @@ public final class MainActivity extends AppCompatActivity implements LoaderManag
 
     private void updateAppStyle(){
         final SharedPreferences defs = PreferenceManager.getDefaultSharedPreferences(this);
-        final boolean hc = defs.getBoolean(Math.DEFKEY_BOOL_HIGH_CONTRAST, true);
+        final boolean hc = defs.getBoolean(Math_.DEFKEY_BOOL_HIGH_CONTRAST, true);
         if (hc) {
             findViewById(R.id.toolbar).setBackgroundColor(Color.BLACK);
             ((TextView)findViewById(R.id.textCurrentOperation)).setTextColor(Color.YELLOW);
@@ -371,11 +372,11 @@ public final class MainActivity extends AppCompatActivity implements LoaderManag
         findViewById(R.id.textCurrentOperation).announceForAccessibility(
                 getString(R.string.exact, operations.op1, operations.getSignForAccessibility(this), operations.op2, operations.result)
         );
-        final Math math = Math.getInstance(this);
+        final Math_ math = Math_.getInstance(this);
         math.increasePoints(this);
         ((TextSwitcher)findViewById(R.id.textSwitcherPoints)).setText(Integer.toString(math.getPoints()));
         handler.postDelayed( () -> findViewById(R.id.imgViewSmileOk).setVisibility(View.VISIBLE), 500);
-        handler.postDelayed( () -> findViewById(R.id.imgViewSmileOk).setVisibility(View.GONE), 3000);
+        handler.postDelayed( () -> findViewById(R.id.imgViewSmileOk).setVisibility(View.GONE), 1500);
         handler.postDelayed(() -> newOperation(), 3500);
     }
 
@@ -399,8 +400,8 @@ public final class MainActivity extends AppCompatActivity implements LoaderManag
     private void showSigns() {
         final SharedPreferences defs = PreferenceManager.getDefaultSharedPreferences(this);
         boolean  itNotat = false;
-        if (defs.contains(Math.DEFKEY_BOOL_IT_NOTATION)) {
-            itNotat = defs.getBoolean(Math.DEFKEY_BOOL_IT_NOTATION, false);
+        if (defs.contains(Math_.DEFKEY_BOOL_IT_NOTATION)) {
+            itNotat = defs.getBoolean(Math_.DEFKEY_BOOL_IT_NOTATION, false);
         } else {
             final Locale current = getResources().getConfiguration().locale;
             try {
@@ -451,7 +452,7 @@ public final class MainActivity extends AppCompatActivity implements LoaderManag
         setNumber(operations.op2, -1, R.id.textView2_2, R.id.textView2_1, false);
         setNumber(result, R.id.textView3_3, R.id.textView3_2, R.id.textView3_1, (result==RESULT_NOT_SET));
 
-        final Math math = Math.getInstance(this);
+        final Math_ math = Math_.getInstance(this);
         ((TextSwitcher)findViewById(R.id.textSwitcherPoints)).setText(Integer.toString(math.getPoints()));
 
         // Colors
@@ -513,6 +514,7 @@ public final class MainActivity extends AppCompatActivity implements LoaderManag
     }
     private static final String QM = "?";
 
+    @SuppressLint("ResourceType")
     private void setNumber(final int number, @IdRes final int tvLeft, @IdRes final int tvCenter,
                            @IdRes final int tvRight, final boolean allEmpty) {
         if (allEmpty) {

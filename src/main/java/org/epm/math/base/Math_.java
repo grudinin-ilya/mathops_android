@@ -11,23 +11,23 @@ import android.view.View;
  * https://github.com/epman/mathops_android
  * GNU General Public License v3.0
  */
-public class Math {
+public class Math_ {
     private final static String DEFKEY_INT_POINTS = "points";
     public final static String DEFKEY_BOOL_IT_NOTATION = "itn";
     public final static String DEFKEY_BOOL_HIGH_CONTRAST = "pref_bool_highcontrast";
 
     @Nullable
-    private static Math ourInstance = null;
+    private static Math_ ourInstance = null;
 
-    public static Math getInstance(@NonNull final Context ctx) {
+    public static Math_ getInstance(@NonNull final Context ctx) {
         if (ourInstance==null)
-            ourInstance = new Math(ctx);
+            ourInstance = new Math_(ctx);
         return ourInstance;
     }
 
     private int points;
 
-    private Math(@NonNull final Context ctx) {
+    private Math_(@NonNull final Context ctx) {
         final SharedPreferences defs = PreferenceManager.getDefaultSharedPreferences(ctx);
         points = defs.getInt(DEFKEY_INT_POINTS, 0);
     }
