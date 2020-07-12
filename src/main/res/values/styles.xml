@@ -1,0 +1,37 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppThemeDialog" parent="Theme.MaterialComponents.DialogWhenLarge">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
+
+    <style name="BigFont" parent="TextAppearance.MaterialComponents.Headline3">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">@dimen/bigtxtSize</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="CalcButton" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">40sp</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
+</resources>
